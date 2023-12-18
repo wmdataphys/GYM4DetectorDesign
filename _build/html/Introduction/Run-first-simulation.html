@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Running first simulations &#8212; BoTorch4EIC GYM - Manual and logs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Introduction/Run-first-simulation';</script>
+    <link rel="canonical" href="https://cfteach.github.io/nnpss/Introduction/Run-first-simulation.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gentle introduction to the tracker" href="../Problem/Definition.html" />
+    <link rel="prev" title="Getting Started" href="Getting-started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">The documention is being updated continuously</div>
+  </div>
+
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/AI4EIC.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/AI4EIC.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Intro-to-framework.html">Adaptive experimentation for detector design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-started.html">Getting Started</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running first simulations</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Problem Formulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Problem/Definition.html">Gentle introduction to the tracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem/Design-workflow.html">Problem formulation workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem/Design-variables.html">Design variables</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Problem/Objectives.html">Objectives of the problem</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing Studies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Parallelization/Parallelization.html">How are <code class="docutils literal notranslate"><span class="pre">NEvents</span></code> run in parallel</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Parallelization/SLURM.html">Efforts on <code class="docutils literal notranslate"><span class="pre">SLURM</span></code> batch submissions</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MOBO Wraper</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wraperScript/ConfigurationJSONFile.html">The Configuration <code class="docutils literal notranslate"><span class="pre">JSON</span></code> file</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../wraperScript/mobowraper.html">The MOBO wrapper</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/karthik18495/BoTorch4EIC" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/karthik18495/BoTorch4EIC/edit/dev/./Introduction/Run-first-simulation.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/karthik18495/BoTorch4EIC/issues/new?title=Issue%20on%20page%20%2FIntroduction/Run-first-simulation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Introduction/Run-first-simulation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running first simulations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Running first simulations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-interactive-visualization">Run interactive visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulaton-in-batch-mode">Run simulaton in <code class="docutils literal notranslate"><span class="pre">batch</span></code> mode</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outside-singularity-simualtion">Outside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simualtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inside-singularity-simulation">Inside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simulation</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-first-simulations">
+<h1>Running first simulations<a class="headerlink" href="#running-first-simulations" title="Permalink to this heading">#</a></h1>
+<p>This chapter will show you how to run the first simulation. There are multiple ways to run a simulation. Here is a brief description of how the running simulations are envisioned.</p>
+<ol class="arabic simple">
+<li><p>Running within singularity - This is the simplest way to run the simulation. Initially, one start the <code class="docutils literal notranslate"><span class="pre">singularity</span></code> container<a class="footnote-reference brackets" href="#whatissig" id="id1">1</a>. This makes debugging and code developement easier. Also, it may be suited when running the simulation on a personal machine. One can also parallelize the simulation using multiple threads.</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Running outside of singularity - This is suited when, one wants to run the simulation on multiple clusters. The MOBO algorithm suggests points, these design points along with the location of the singularity container is wrapped in a <code class="docutils literal notranslate"><span class="pre">SLURM</span></code> script to run on a <code class="docutils literal notranslate"><span class="pre">HPC</span></code> node. Again, One can also parallelize the simulation using multiple threads either inside or outside the singularity container. It is though more practical to run simulations outside of singularity and parallelize the simulation using multiple threads within the singularity when submitting to <code class="docutils literal notranslate"><span class="pre">SLURM</span></code> node.</p></li>
+</ol>
+<p>More information about parallelization can be found in <a class="reference internal" href="../Parallelization/Parallelization.html#content-headers-parallelization"><span class="std std-ref">Types of parallelizations</span></a></p>
+<p>Hence, to getting started with simulations, there are three main modes one can run the simulations currently supporting both <code class="docutils literal notranslate"><span class="pre">batch</span></code> mode and <code class="docutils literal notranslate"><span class="pre">interactive</span></code> mode. In the <code class="docutils literal notranslate"><span class="pre">batch</span></code> mode, the simulations can be run on a single thread or can be distributed into multiple threads. While in the <code class="docutils literal notranslate"><span class="pre">interactive</span></code> mode, the simulation is run on a single thread and a visualization of the detector geometry is saved.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">interactive</span></code> mode is useful for debugging and understanding the geometry alongside getting familiar to <code class="docutils literal notranslate"><span class="pre">Geant4</span></code>. It is <strong>NOT</strong> used for running simulations.</p>
+</div>
+<p>A script named <code class="docutils literal notranslate"><span class="pre">runRandomPoint.py</span></code> is provided in the <code class="docutils literal notranslate"><span class="pre">BoTorch4EIC</span></code> directory. This script is meant to be used as a tutorial script for running simulations in various modes.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<a class="reference external" href="http://runRandomPoint.py">runRandomPoint.py</a> usage<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python runRandomPoint.py --config HolyGrail_mobo_emulator_cfg.json --HowToRun 1
+args : 
+    --config -c   : Configuration JSON file to initialize variables for optimization
+    --HowToRun -r : 0, [1], 2 
+                : 0 - Run simulations in batch mode within in singularity. User when running optimization on a node with parallel simulations
+                : 1 - Build the geometry and visualize it and save the .root file. This option used only when outside of singularity.
+                : 2 - Run simulations in single thread. But this runs the simulations outside of singularity
+</pre></div>
+</div>
+</div>
+</details></section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-interactive-visualization">
+<h1>Run interactive visualization<a class="headerlink" href="#run-interactive-visualization" title="Permalink to this heading">#</a></h1>
+<p>To better understand the geometry and the problem in hand, let us start with running an interactive visualization of a random design point. In order to run this interactive visualization, follow the set of instructions below.</p>
+<ol class="arabic simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">BoTorch4EIC</span></code> directory and checkout to <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch. You should be able to see <code class="docutils literal notranslate"><span class="pre">HolyGrail_mobo_emulator_cfg.json</span></code> file along with other files.</p></li>
+<li><p>Open the file named <code class="docutils literal notranslate"><span class="pre">HolyGrail_mobo_emulator_cfg.json</span></code> and change the following variables accordingly.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RUNNING_DIR</span></code> – path where the simulation is to be run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SINGULARITY_IMAGE</span></code> – path where the singularity image is located.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MOUNT_PATH</span></code> – the first element in the path is where the <code class="docutils literal notranslate"><span class="pre">cvmfs</span></code> is mounted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src_dir</span></code> – path to <code class="docutils literal notranslate"><span class="pre">BoTorch4EIC</span></code> directory.
+More information about the configuration file can be found in the section <a class="reference internal" href="../wraperScript/ConfigurationJSONFile.html"><span class="doc std std-doc">The Configuration <code class="docutils literal notranslate"><span class="pre">JSON</span></code> file</span></a>.</p></li>
+</ul>
+</li>
+<li><p>Run the script <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">runRandomPoint.py</span> <span class="pre">-c</span> <span class="pre">HolyGrail_mobo_cfg.json</span> <span class="pre">-r</span> <span class="pre">1</span></code>. Note that the basically, creates a random design point with all the constraints and visualizes the design. The output file <code class="docutils literal notranslate"><span class="pre">Support_Structure.root</span></code> file gets saved in the <code class="docutils literal notranslate"><span class="pre">RUNNING_DIR</span></code>.</p></li>
+<li><p>The file can be viewed in <a class="reference external" href="https://jsroot.gsi.de/latest">JSRoot</a>, which can used to open the <code class="docutils literal notranslate"><span class="pre">Support_Structure.root</span></code> file and open the geometry named <code class="docutils literal notranslate"><span class="pre">World</span></code>. Hide the Blackhole geometery. Select the background to open <code class="docutils literal notranslate"><span class="pre">controls</span></code> and select <code class="docutils literal notranslate"><span class="pre">clipping</span></code> on <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+</ol>
+<p>Here is an example of a geometry made from the script</p>
+<div class="video-container">
+    <iframe src="https://karthik18495.github.io/ECCE_GeomFiles/JsRoot633/?nobrowser&file=../geom/Support_Structure.root&item=World&opt=all;clipx;roty317,rotz351,zoom25" height="315" width="100%" allowfullscreen="1" frameborder="0">
+    </iframe>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-simulaton-in-batch-mode">
+<h1>Run simulaton in <code class="docutils literal notranslate"><span class="pre">batch</span></code> mode<a class="headerlink" href="#run-simulaton-in-batch-mode" title="Permalink to this heading">#</a></h1>
+<p>Until now, the geometry has been visualization. Simulations have not yet run. So in order to run simulation of tracks, it is better to run them in quiet mode rather than visualizating and simulating the tracks. In order to run <code class="docutils literal notranslate"><span class="pre">10000</span></code> events of <span class="math notranslate nohighlight">\(\pi^{+}\)</span> tracks,</p>
+<section id="outside-singularity-simualtion">
+<h2>Outside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simualtion<a class="headerlink" href="#outside-singularity-simualtion" title="Permalink to this heading">#</a></h2>
+<p>This is to illustrate, the capabilities of running a python script which should load singularity and run a bunch of commands and exit. Therefore, run the following command outside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> container.</p>
+<div class="highlight-tcsh notranslate"><div class="highlight"><pre><span></span>python runRandomPoint.py --config HolyGrail_mobo_emulator_cfg.json --HowToRun 1
+</pre></div>
+</div>
+<p>The output of the file is then analyzed and a bunch of pdf files are generated. These files can be found in the <code class="docutils literal notranslate"><span class="pre">RUNNING_DIR</span></code> directory with a random <code class="docutils literal notranslate"><span class="pre">uuid</span></code> name. The PDFs are the <code class="docutils literal notranslate"><span class="pre">resolutions</span></code> extracted for detector response variables such as the momentum resolution (<span class="math notranslate nohighlight">\(\frac{\sigma_{p}}{p}\)</span>) and angular resolution (<span class="math notranslate nohighlight">\(\sigma_{\theta}\)</span>, <span class="math notranslate nohighlight">\(\sigma_{\phi}\)</span>).</p>
+</section>
+<section id="inside-singularity-simulation">
+<h2>Inside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simulation<a class="headerlink" href="#inside-singularity-simulation" title="Permalink to this heading">#</a></h2>
+<p>This is useful when one is using the singularity container and running simulations from within the singularity on a single machine. This is how the whole framework was designed initially back in 2021.</p>
+<div class="highlight-tcsh notranslate"><div class="highlight"><pre><span></span>python runRandomPoint.py --config HolyGrail_mobo_emulator_cfg.json --HowToRun 0
+</pre></div>
+</div>
+<p>Once when the script is executed, the resolution values along with Costproxies are printed.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="whatissig"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">singularity</span></code> container is a virtual machine that contains all the required software and libraries to run the simulation.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Getting-started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Problem/Definition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gentle introduction to the tracker</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Running first simulations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-interactive-visualization">Run interactive visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulaton-in-batch-mode">Run simulaton in <code class="docutils literal notranslate"><span class="pre">batch</span></code> mode</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outside-singularity-simualtion">Outside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simualtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inside-singularity-simulation">Inside <code class="docutils literal notranslate"><span class="pre">singularity</span></code> simulation</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Karthik Suresh et.al. for AI4EIC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  National Nuclear Physics Summer School (NNPSS) 2022
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

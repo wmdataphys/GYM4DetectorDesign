@@ -1,0 +1,68 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: BoTorch4EIC GYM - Manual and logs
+author: Karthik Suresh et.al. for AI4EIC
+logo: images/AI4EIC.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/karthik18495/BoTorch4EIC # Online location of your book
+  path_to_book: ./  # Optional path to your book, relative to the repository root
+  branch: dev  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon                   : "./images/favicon.ico"  # A path to a favicon image
+  use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
+  use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_footer              : "National Nuclear Physics Summer School (NNPSS) 2022"  # Will be displayed underneath the footer.
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : "https://cfteach.github.io/nnpss"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  announcement              : "The documention is being updated continuously"
+  comments:
+    hypothesis              : true
+  
+  
+
+# Parse and render settings
+parse:
+  myst_enable_extensions: [
+      "amsmath",
+      "colon_fence",
+      "deflist",
+      "dollarmath",
+      "html_admonition",
+      "html_image",
+      "linkify",
+      "replacements",
+      "smartquotes",
+      "substitution",
+      "tasklist",
+      ]
+  myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
+  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+
+bibtex_bibfiles:
+    - references.bib
+
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    bibtex_reference_style: label
+    bibtex_default_style: unsrt

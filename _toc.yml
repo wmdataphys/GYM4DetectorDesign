@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Introduction 
+    chapters:   
+    - file: Introduction/Intro-to-framework
+    - file: Introduction/Getting-started
+    - file: Introduction/Run-first-simulation
+  - caption: Problem Formulation
+    chapters:
+    - file: Problem/Definition
+    - file: Problem/Silicon-tracker
+    - file: Problem/Design-workflow
+    - file: Problem/Design-variables
+    - file: Problem/Objectives
+  - caption: Computing Studies
+    chapters:
+    - file: Parallelization/Parallelization
+    - file: Parallelization/SLURM
+  - caption: MOBO Wraper
+    chapters:
+    - file: wraperScript/ConfigurationJSONFile.md
+    - file: wraperScript/mobowraper.md
