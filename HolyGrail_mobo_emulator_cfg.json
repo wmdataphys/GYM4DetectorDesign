@@ -1,11 +1,11 @@
 {
     "Name" : "Holy Grail Configuration",
     "Description" : "This is the configuration for the Holy Grail",
-    "RUNNING_DIR" : "/sciclone/pscr/ksuresh/BoTorch_RUNNING_DIR",
+    "RUNNING_DIR" : "/work/BOTORCH_RUNNINGDIR",
     "SINGULARITY_IMAGE" : "/sciclone/home/ksuresh/data10/BoTorchProject/Singularity/cvmfs/eic.opensciencegrid.org/singularity/rhic_sl7_ext.sif",
-    "MOUNT_PATH" : ["/sciclone/home/ksuresh/data10/BoTorchProject/Singularity/cvmfs/", "$PWD"],
+    "MOUNT_PATH" : ["/work/Singularity/cvmfs/", "$PWD"],
     "BIND_PATH" : ["/cvmfs", "/work"],
-    "src_dir" : "/sciclone/home/ksuresh/data10/BoTorchProject/BoTorch4EIC",
+    "src_dir" : "/work/GYM4DetectorDesign",
     "Settings" : "Settings/HolyGrail.setting",
     "Macros" : "AllMacros",
     "Version" : "1.0",
@@ -15,7 +15,7 @@
     "save_prefix" : "HolyGrail",
     "N_Calls" : 50,
     "Batch_Size" : 3,
-    "N_Threads" : 10,
+    "N_Threads" : 2,
     "N_Objs" : 5,
     "N_DesignParams" : 78,
     "N_Constraints" : 0,
@@ -62,5 +62,5 @@
     "eta_bins" : [[-3.4, -2.0], [-2.0, -0.8], [-0.8, 0.8], [0.8, 2.0], [2.0, 3.4]],
     "mom_range" : [1.0, 20.0],
     "N_tracks_per_event" : 5,
-    "N_Events" : 100
+    "N_Events" : 10000
 }
